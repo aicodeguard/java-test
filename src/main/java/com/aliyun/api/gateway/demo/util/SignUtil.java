@@ -130,4 +130,31 @@ public class SignUtil {
         }
     }
 
+    public static void WrongThreadPoolUsageExample(String[] args) {
+    // ❌ 错误用法：使用 Executors.newCachedThreadPool()
+    // 该线程池会无限创建线程，在高并发场景下容易 OOM
+    ExecutorService executor = Executors.newCachedThreadPool();
+
+    // ❌ 提交过多任务，任务中还有阻塞操作
+    for (int i = 0; i < 100000; i++) {
+        final int taskId = i;
+        executor.submit(() -> {
+            try {
+                // 模拟长时间阻塞
+                Thread.sleep(10000);
+                System.out.println("Task " + taskId + " finished.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    // ❌ 忘记调用 shutdown() 或 shutdownNow()
+    // 线程池将一直运行，导致进程无法正常退出
+    // executor.shutdown();
+
+    // ❌ 在主线程中直接退出可能导致部分任务丢失
+    System.out.println("Main thread finished, but thread pool still running...");
+}
+
 }
