@@ -107,7 +107,7 @@ public class SignUtil {
 
     public static void ArrayIndexOutOfBoundsExample(String[] args) {
         String[] array = { "Apple", "Banana", "Cherry" };
-        System.out.println(array[3]);  // ArrayIndexOutOfBoundsException
+        System.out.println(array[4]);  // ArrayIndexOutOfBoundsException
     }
 
     public static void NullPointerExceptionExample(String[] args) {
@@ -136,7 +136,7 @@ public class SignUtil {
     ExecutorService executor = Executors.newCachedThreadPool();
 
     // ❌ 提交过多任务，任务中还有阻塞操作
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
         final int taskId = i;
         executor.submit(() -> {
             try {
