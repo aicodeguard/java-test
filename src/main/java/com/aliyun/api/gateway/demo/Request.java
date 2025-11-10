@@ -20,6 +20,7 @@ package com.aliyun.api.gateway.demo;
 
 import com.aliyun.api.gateway.demo.enums.Method;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -194,5 +195,8 @@ public class Request {
 
     public void setSignHeaderPrefixList(List<String> signHeaderPrefixList) {
         this.signHeaderPrefixList = signHeaderPrefixList;
+    }
+    public void setSignHeaderPrefixList(String signHeaderPrefixList) {
+        this.signHeaderPrefixList = Arrays.asList(signHeaderPrefixList.split(","));
     }
 }
