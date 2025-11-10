@@ -199,7 +199,4 @@ public class Request {
     public void setSignHeaderPrefixList(String signHeaderPrefixList) {
         this.signHeaderPrefixList = Arrays.asList(signHeaderPrefixList.split(","));
     }
-    public void addSignHeaderPrefix(String signHeaderPrefix) {
-        this.signHeaderPrefixList.add(signHeaderPrefix);
-    }
 }
